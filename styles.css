@@ -1,83 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Inter:wght@300;400;600&display=swap');
+
 :root {
-    --black: #000000;
-    --dark: #0a0a0a;
-    --grey: #1d1d1f;
-    --light-grey: #86868b;
+    --bg: #000000;
+    --card: #0a0a0a;
+    --border: #1c1c1e;
     --gold: #d4af37;
-    --white: #f5f5f7;
-    --blur: blur(20px);
+    --white: #ffffff;
+    --sub: #86868b;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; line-height: 1.1; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-body {
-    background: var(--black);
-    color: var(--white);
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif;
-    line-height: 1.1;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
 
-.cursor-glow {
-    position: fixed; width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
-    pointer-events: none; z-index: 0;
-}
+/* Apple-tier Navigation */
+nav { position: fixed; top: 0; width: 100%; height: 54px; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 1000; display: flex; align-items: center; }
+.nav-content { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+.logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 18px; letter-spacing: -1px; }
+.nav-links a { color: var(--white); text-decoration: none; font-size: 12px; margin-left: 20px; opacity: 0.6; }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+/* High-Velocity Hero */
+.hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+h1 { font-family: 'Space Grotesk'; font-size: clamp(40px, 10vw, 90px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.9; margin-bottom: 32px; }
+.gold-txt { color: var(--gold); }
+.hero-sub { font-size: clamp(18px, 3vw, 24px); color: var(--sub); max-width: 700px; margin: 0 auto 48px; font-weight: 300; }
 
-.glass-nav {
-    position: fixed; top: 0; width: 100%; height: 54px;
-    background: rgba(0,0,0,0.8); backdrop-filter: var(--blur);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    z-index: 1000; display: flex; align-items: center;
-}
+.main-btn { display: inline-block; background: var(--white); color: var(--bg); padding: 16px 32px; border-radius: 99px; text-decoration: none; font-weight: 600; }
 
-.nav-content { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 700; font-size: 18px; letter-spacing: -1px; }
-.nav-links a { color: var(--white); text-decoration: none; font-size: 12px; margin-left: 24px; opacity: 0.8; transition: 0.3s; }
-.pill-btn { background: var(--white); color: var(--black) !important; padding: 6px 14px; border-radius: 99px; font-weight: 600; }
+/* Bento Grid Architecture */
+.section { padding: 100px 0; border-top: 1px solid var(--border); }
+.label { font-size: 10px; font-weight: 600; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; display: block; }
+h2 { font-family: 'Space Grotesk'; font-size: clamp(32px, 6vw, 56px); font-weight: 700; margin-bottom: 48px; letter-spacing: -0.04em; }
 
-.hero-full { min-height: 100vh; display: flex; align-items: center; padding: 0 24px; }
-h1 { font-size: clamp(48px, 10vw, 120px); font-weight: 700; letter-spacing: -0.05em; margin-bottom: 32px; }
-.gradient-text { background: linear-gradient(180deg, #fff 0%, #888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-full p { font-size: clamp(18px, 3vw, 28px); color: var(--light-grey); max-width: 700px; line-height: 1.2; margin-bottom: 48px; }
+.bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 32px; transition: 0.3s; }
+.card:hover { border-color: var(--gold); }
+.card h3 { font-family: 'Space Grotesk'; font-size: 24px; margin-bottom: 12px; color: var(--gold); }
+.card p { color: var(--sub); line-height: 1.4; font-size: 16px; }
 
-.main-btn { display: inline-block; background: var(--white); color: var(--black); padding: 18px 36px; border-radius: 99px; text-decoration: none; font-weight: 600; font-size: 17px; transition: 0.3s; }
-.sub-link { margin-left: 24px; color: var(--gold); text-decoration: none; font-size: 17px; font-weight: 500; }
-
-.section-dark { padding: 120px 0; background: var(--black); }
-h2 { font-size: clamp(32px, 6vw, 64px); font-weight: 700; letter-spacing: -0.04em; margin-bottom: 64px; }
-
-.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.bento-card { background: var(--grey); padding: 40px; border-radius: 32px; border: 1px solid rgba(255,255,255,0.05); }
-.bento-card.large { grid-column: span 2; }
-.card-tag { font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
-.bento-card h3 { font-size: 32px; margin-bottom: 16px; letter-spacing: -0.03em; }
-.bento-card p { color: var(--light-grey); font-size: 17px; line-height: 1.4; }
-
-.pillar-stack { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
-.pillar-row { display: flex; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; }
-.p-item { font-size: 24px; font-weight: 600; margin-right: 40px; margin-bottom: 20px; }
-.p-item span { color: var(--gold); font-size: 12px; vertical-align: top; margin-right: 8px; }
-
-.sauna-experience { min-height: 80vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero.png'); background-size: cover; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 40px; margin: 0 24px; }
-.sauna-content h2 { color: var(--white); margin-bottom: 24px; }
-
-.footer-cta { padding: 160px 0; text-align: center; }
-.huge-btn { font-size: clamp(32px, 5vw, 64px); font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: -0.05em; transition: 0.3s; }
+/* Footer */
+.footer-cta { padding: 15vh 0; text-align: center; }
+.huge-btn { font-family: 'Space Grotesk'; font-size: clamp(32px, 5vw, 64px); text-decoration: none; color: var(--white); font-weight: 700; }
 .huge-btn:hover { color: var(--gold); }
-.legal-footer { margin-top: 80px; display: flex; justify-content: space-between; font-size: 10px; opacity: 0.4; letter-spacing: 1px; text-transform: uppercase; }
 
 @media (max-width: 768px) {
-    .container { padding: 0 20px; }
-    .bento-grid { grid-template-columns: 1fr; }
-    .bento-card.large { grid-column: span 1; }
-    .nav-content { padding: 0 20px; }
-    .nav-links { display: none; }
-    .footer-cta { padding: 100px 0; }
-    .huge-btn { font-size: 40px; }
+    .bento { grid-template-columns: 1fr; }
+    .hero { text-align: left; justify-content: flex-start; }
 }
-.p-item { display: flex; align-items: center; }
-.p-item i { width: 24px; height: 24px; color: var(--gold); margin-right: 12px; stroke-width: 1.5px; }
