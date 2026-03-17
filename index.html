@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HumanitAI | Human Infrastructure</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>HumanitAI | Preventative Human Infrastructure</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
@@ -18,6 +18,16 @@
         </div>
     </nav>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-body">
+                <h2 id="modal-title"></h2>
+                <p id="modal-text"></p>
+            </div>
+        </div>
+    </div>
+
     <main class="container">
         <section class="hero">
             <div class="reveal">
@@ -28,17 +38,33 @@
         </section>
 
         <section id="pillars" class="section">
-            <span class="label">Integrated Architecture</span>
+            <span class="label">Integrated Architecture (Click for Details)</span>
             <h2>Eight Pillars of<br>Resilience.</h2>
             <div class="bento">
-                <div class="card"><h3>01 Movement</h3><p>Adaptive sessions to improve physical independence and confidence.</p></div>
-                <div class="card"><h3>02 Regulation</h3><p>Grounding practices to find stability in everyday life.</p></div>
-                <div class="card"><h3>03 Social</h3><p>Welcoming spaces to vaporize isolation and rebuild trust.</p></div>
-                <div class="card"><h3>04 Life Skills</h3><p>Practical foundations for daily functioning and organization.</p></div>
-                <div class="card"><h3>05 AI Wellness</h3><p>Safe, human-centered boundaries with modern technology.</p></div>
-                <div class="card"><h3>06 Companion</h3><p>Non-clinical support providing daily habit nudges.</p></div>
-                <div class="card"><h3>07 The Circuit</h3><p>Radical thermal recalibration for the nervous system.</p></div>
-                <div class="card"><h3>08 Insights</h3><p>Data-driven patterns to strengthen community prevention.</p></div>
+                <div class="card" data-title="01 Movement" data-text="We deliver accessible movement-based sessions designed to help people improve mobility, confidence, physical wellbeing, and independence. These sessions are especially valuable for people who may not feel comfortable in mainstream fitness spaces.">
+                    <h3>01 Movement</h3><p>Adaptive sessions to improve physical independence.</p>
+                </div>
+                <div class="card" data-title="02 Regulation" data-text="We offer grounding and nervous-system support through simple practices that help people slow down, regulate stress, and feel more stable in everyday life. Our sessions focus on pacing, breathwork, and physiological stabilization.">
+                    <h3>02 Regulation</h3><p>Grounding practices to find stability.</p>
+                </div>
+                <div class="card" data-title="03 Social" data-text="We create welcoming spaces for conversation, belonging, peer support, and community interaction. These spaces (including our 4thSpace Tea Bars) are designed to reduce loneliness and help people rebuild trust and human connection.">
+                    <h3>03 Social</h3><p>Welcoming spaces to rebuild trust.</p>
+                </div>
+                <div class="card" data-title="04 Life Skills" data-text="We support people with the practical foundations of daily life, including routine-building, planning, self-management, organisation, and community navigation. This is employability-adjacent stability building.">
+                    <h3>04 Life Skills</h3><p>Foundations for daily functioning.</p>
+                </div>
+                <div class="card" data-title="05 AI Wellness" data-text="We help people understand and use modern tools in safe, practical, human-centred ways. This includes building confidence with digital systems and reducing the growing gap caused by AI exclusion. Technology should empower, not exclude.">
+                    <h3>05 AI Wellness</h3><p>Safe boundaries with modern technology.</p>
+                </div>
+                <div class="card" data-title="06 Companion" data-text="Our AI Wellbeing Companion is a WhatsApp/SMS style support tool providing daily prompts, reminders, and non-clinical guidance. It includes habit support and human escalation when risk signals are detected.">
+                    <h3>06 Companion</h3><p>Non-clinical support and habit nudges.</p>
+                </div>
+                <div class="card" data-title="07 The Circuit" data-text="The centerpiece of our social infrastructure. A world-class sauna environment used as a precision tool for thermal regulation and community cohesion. Heat, steam, and silence—the ultimate nervous-system reset.">
+                    <h3>07 The Circuit</h3><p>Radical thermal recalibration for the brain.</p>
+                </div>
+                <div class="card" data-title="08 Insights" data-text="Where appropriate and ethically managed, we use anonymised insights to better understand local needs. These pattern analyses inform councils and health systems to strengthen preventative community support strategies.">
+                    <h3>08 Insights</h3><p>Data-driven patterns for prevention.</p>
+                </div>
             </div>
         </section>
 
@@ -48,8 +74,29 @@
         </section>
     </main>
 
+    <footer>
+        &copy; 2026 HUMANITAI CIC. B&NES, UK.
+    </footer>
+
     <script>
         gsap.from(".reveal", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out" });
+
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalText = document.getElementById("modal-text");
+        const closeBtn = document.querySelector(".close-btn");
+
+        document.querySelectorAll(".card").forEach(card => {
+            card.addEventListener("click", () => {
+                modalTitle.innerText = card.getAttribute("data-title");
+                modalText.innerText = card.getAttribute("data-text");
+                modal.style.display = "flex";
+                gsap.from(".modal-content", { scale: 0.8, opacity: 0, duration: 0.4, ease: "back.out(1.7)" });
+            });
+        });
+
+        closeBtn.onclick = () => { modal.style.display = "none"; };
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; };
     </script>
 </body>
 </html>
